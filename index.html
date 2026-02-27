@@ -1,0 +1,210 @@
+<!--
+Recalvo Barbershop Website
+Ready for GitHub Pages Deployment
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Recalvo Barbershop - Premium grooming experience in Setia Alam.">
+<title>Recalvo Barbershop | Premium Grooming Experience</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+:root{
+--bg:#0a0a0a;
+--accent:#8B4513;
+--border:#222;
+}
+
+body{
+font-family:'Inter',sans-serif;
+background:#0a0a0a;
+color:#fff;
+scroll-behavior:smooth;
+}
+
+.font-display{
+font-family:'Bebas Neue',sans-serif;
+letter-spacing:.05em;
+}
+
+.btn-primary{
+background:linear-gradient(135deg,#8B4513,#A0522D);
+transition:.3s;
+}
+.btn-primary:hover{
+transform:translateY(-2px);
+box-shadow:0 10px 30px rgba(139,69,19,.4);
+}
+
+.service-card{
+background:#141414;
+border:1px solid #222;
+transition:.4s;
+}
+.service-card:hover{
+transform:translateY(-8px);
+border-color:#8B4513;
+}
+
+.reveal{
+opacity:0;
+transform:translateY(40px);
+transition:.8s;
+}
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="min-h-screen flex flex-col justify-center items-center text-center px-6">
+<h1 class="font-display text-7xl md:text-9xl mb-6">
+PRECISION.<br><span class="text-[#8B4513]">STYLE.</span><br>CONFIDENCE.
+</h1>
+
+<p class="text-gray-400 max-w-xl mb-10">
+Premium grooming experience in Setia Alam.
+</p>
+
+<a href="#booking" class="btn-primary px-8 py-4 rounded text-white font-semibold">
+Book Appointment
+</a>
+</section>
+
+<!-- SERVICES -->
+<section class="py-24 px-6 bg-[#111]">
+<h2 class="font-display text-6xl text-center mb-16">OUR SERVICES</h2>
+
+<div class="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto">
+
+<div class="service-card p-8 text-center">
+<h3 class="font-display text-2xl mb-4">Haircut</h3>
+<p class="text-gray-400">RM15 - RM25</p>
+</div>
+
+<div class="service-card p-8 text-center">
+<h3 class="font-display text-2xl mb-4">Beard Trim</h3>
+<p class="text-gray-400">RM15</p>
+</div>
+
+<div class="service-card p-8 text-center">
+<h3 class="font-display text-2xl mb-4">Hair + Beard</h3>
+<p class="text-gray-400">RM25 - RM35</p>
+</div>
+
+<div class="service-card p-8 text-center">
+<h3 class="font-display text-2xl mb-4">Hair Styling</h3>
+<p class="text-gray-400">RM10</p>
+</div>
+
+</div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking" class="py-24 px-6 text-center">
+<h2 class="font-display text-6xl mb-12">BOOK NOW</h2>
+
+<form id="bookingForm" class="max-w-xl mx-auto space-y-6">
+
+<input type="text" id="name" required placeholder="Full Name"
+class="w-full p-4 bg-[#111] border border-[#222]">
+
+<input type="tel" id="phone" required placeholder="Phone Number"
+class="w-full p-4 bg-[#111] border border-[#222]">
+
+<select id="service" required
+class="w-full p-4 bg-[#111] border border-[#222]">
+<option value="">Select Service</option>
+<option>Haircut</option>
+<option>Beard Trim</option>
+<option>Hair + Beard</option>
+<option>Hair Styling</option>
+</select>
+
+<input type="date" id="date" required
+class="w-full p-4 bg-[#111] border border-[#222]">
+
+<input type="time" id="time" required
+class="w-full p-4 bg-[#111] border border-[#222]">
+
+<button class="btn-primary w-full py-4 rounded font-semibold">
+Confirm Booking (WhatsApp)
+</button>
+
+</form>
+</section>
+
+<!-- BUSINESS HOURS -->
+<section class="py-24 bg-[#111] text-center">
+<h2 class="font-display text-5xl mb-6">OPEN DAILY</h2>
+<p>10:00 AM - 10:00 PM</p>
+<p id="status" class="mt-4 font-semibold"></p>
+</section>
+
+<!-- MAP -->
+<section class="h-[400px]">
+<iframe
+width="100%"
+height="100%"
+style="border:0"
+loading="lazy"
+allowfullscreen
+src="https://www.google.com/maps?q=43,Jalan+Setia+Permai+BS+U13/BS,Setia+Alam,Shah+Alam,Selangor&output=embed">
+</iframe>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-10 text-center border-t border-[#222]">
+<p>Recalvo Barbershop © 2026</p>
+</footer>
+
+<script>
+// WhatsApp Booking
+document.getElementById("bookingForm").addEventListener("submit",function(e){
+e.preventDefault();
+
+let name=document.getElementById("name").value;
+let phone=document.getElementById("phone").value;
+let service=document.getElementById("service").value;
+let date=document.getElementById("date").value;
+let time=document.getElementById("time").value;
+
+let message=`Hello Recalvo Barbershop,%0A
+Name: ${name}%0A
+Phone: ${phone}%0A
+Service: ${service}%0A
+Date: ${date}%0A
+Time: ${time}`;
+
+window.open(`https://wa.me/60123456789?text=${message}`,"_blank");
+});
+
+// Open / Closed Status
+function updateStatus(){
+let now=new Date();
+let hour=now.getHours();
+let status=document.getElementById("status");
+
+if(hour>=10 && hour<22){
+status.innerHTML="🟢 We Are Open";
+status.className="text-green-400 mt-4";
+}else{
+status.innerHTML="🔴 We Are Closed";
+status.className="text-red-400 mt-4";
+}
+}
+updateStatus();
+</script>
+
+</body>
+</html>
